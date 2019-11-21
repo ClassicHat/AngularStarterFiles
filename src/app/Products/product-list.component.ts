@@ -100,4 +100,8 @@ export class ProductListComponent{
         return this.products.filter((product: IProduct) =>
             product.productName.toLowerCase().indexOf(filterBy) !== -1);
       }
+
+      onRatingClicked(message:string):void{
+        this.pageTitle = message;
+      }
 }
