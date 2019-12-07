@@ -6,14 +6,25 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './Products/product-list.component';
 import { StarComponent } from './shared/star.component';
 
+import {RouterModule} from '@angular/router';
+import { WelcomeComponent } from './home/welcome.component';
+
 @NgModule({
   declarations: [
     AppComponent, 
     ProductListComponent,
-    StarComponent
+    StarComponent,
+    WelcomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, 
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'products', component: ProductListComponent},
+      {path: 'welcome', component: WelcomeComponent},
+      {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+    ])
   ],
   bootstrap: [AppComponent]
 })
