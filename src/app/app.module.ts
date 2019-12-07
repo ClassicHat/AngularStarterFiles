@@ -9,6 +9,8 @@ import { StarComponent } from './shared/star.component';
 import {RouterModule} from '@angular/router';
 import { WelcomeComponent } from './home/welcome.component';
 
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -19,6 +21,8 @@ import { WelcomeComponent } from './home/welcome.component';
   imports: [
     BrowserModule, 
     FormsModule,
+    RouterModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'products', component: ProductListComponent},
       {path: 'welcome', component: WelcomeComponent},

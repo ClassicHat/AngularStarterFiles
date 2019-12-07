@@ -10,7 +10,7 @@ import { ProductService } from './product.service';
 
 
 export class ProductListComponent{
-    pageTitle:string = "DilCoInc Products";
+    pageTitle:string = "DilCoInc Product Managment";
     imageWidth:number = 50;
     imageMargin:number = 4;
     showImage:boolean = true;
@@ -19,9 +19,17 @@ export class ProductListComponent{
     products:IProduct[] = [];
 
       constructor(private productService: ProductService){
-        this.products = productService.getProduct();
-        this.filterProduct = this.products;
+        console.log('In Constructor');
       };
+
+      ngOnInit():void{
+        console.log('In Init');
+        //this.products = productService.getProduct();
+        this.productService.getProduct().subscribe(productsObserved => {
+          this.products = productsObserved;
+          this.filterProduct = this.products;
+        })
+      }
 
       toggleImage():void {
           this.showImage = !this.showImage;
